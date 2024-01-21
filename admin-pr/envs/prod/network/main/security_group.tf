@@ -50,3 +50,26 @@ resource "aws_security_group" "vpc" {
     Name = "${aws_vpc.this.tags.Name}-vpc"
   }
 }
+
+resource "aws_security_group" "db_foobar" {
+  name = "${aws_vpc.this.tags.Name}-db-foobar"
+  vpc_id = aws_vpc.this.id
+
+  ingress {
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    self = true
+  }
+
+  egress {
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "${aws_vpc.this.tags.Name}-db-foobar"
+  }
+}
