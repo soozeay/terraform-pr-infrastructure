@@ -117,7 +117,7 @@ resource "aws_iam_role_policy" "ecs" {
           }
         },
         "Resource": [
-          "arn:aws:ecs:${data.aws_region.current.id}:${data.aws_caller_identity.self.id}:task-definition/${local.name_prefix}-${local.service_name}:*"
+          "arn:aws:ecs:${data.aws_region.current.id}:${data.aws_caller_identity.self.id}:task-definition/${local.name_prefix}-${local.service_name}:*",
           "arn:aws:ecs:${data.aws_region.current.id}:${data.aws_caller_identity.self.id}:task/*"
         ]
       },
